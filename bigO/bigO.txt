@@ -1,0 +1,28 @@
+Big O Notation
+
+How long an algorithm takes to run. Comparing the efficiency of ifferent approaches to a problem.
+
+Measuring:
+How quickly the runtime grows. Relative to the data input, "n". As the input gets larger.
+
+Constant time, no matter how much input: O(1)
+
+Linear time, time grows as input grows: O(n)
+
+Quadratic time, exponentially grows, both time and input: O(n^2)
+
+Drop constants and insigficant numbers when calculating big O times.
+
+Often talking about the worse case scenario.
+
+
+Space complexity: How much memory will this take up? Memory cost.
+We simply look at the total size (relative to the size of the input)
+of any new variables we're allocating.
+
+There is a tradeoff between time optimizing and space optimizing, so you have to decide which one to use.
+
+Only issue with Big O is that it ignores constants, even though these can matter.
+
+
+

@@ -1,0 +1,121 @@
+DATA STRUCTURES:
+
+RAM:
+
+Variables are stored in reandom access memory (RAM) === memory.
+
+RAM is a really tall bookshelf with a lot of shelves, each shelf is numbered and that is its address.
+
+Each shelf hold 8 bits (switch for on or off, denoted with 1 or 0)
+
+8 bits makes a byte.
+
+Processor does the work in a computer.
+
+Memory controller reads and writes to and from the RAM (direct connection to each shelf in the RAM)
+
+Processor -- Memory controller -- RAM
+
+Direct connection means we can access each address immediately. Right away.
+
+But programs tend to access memory that is nearby for an extra speed boost.
+
+This is done because of a processer has a cache, storing copy of stuff it recently read from the RAM.
+
+Cache is faster to read from than RAM, so the processor saves time whenver it can read something from cache instead of going to the RAM.
+
+When the processor asks for the contents of a given memory address, the memory controller also sends the contents of a handful of nearby memory addresses.
+
+All gets put in the cache. RAM will subsequently read these.
+
+If the processor asks to read address 951 than 362, the cache does not help, will need to go out to the RAM.
+
+Reading from savesuential memory addresses is faster than jumping around.
+
+---------------
+
+Binary Numbers: 1010101
+
+Arrays: Storing several numbers
+RAM is basically in array. Elements are numbered (index)
+
+How to get the nth item in a array:
+address of nth item in array = address of array start + n
+
+More realistically, 8 bytes of memory per index for each info.
+address of nth item in array=
+address of array start + (n * \text{size of each item in bytes})address of array start+(n∗size of each item in bytes)
+
+O(1) time, this is all constant.
+
+Summary: Looking up contents of a given array is O(1) time
+
+This only works if the array is the same size (same number of bytes) or the array is uninterrupted in memory, no gaps in the array
+--so if the array is predictable we can find exactly where in the memory the nth eleemnt of our array will because
+--need a bunch of uniterrupted free space in RAM and every item has to be the same size
+
+Arrays have fast look ups (O(1)) but each item in the array needs to be the same size. and a big block of uninterrupted memory to store the array.
+
+---------------
+STRINGS - series of characters. Can be expressed in 8 bit characters
+
+----------------
+Pointer based array 
+
+Instead of storing the strings right inside our array, let's just put the strings wherever we can fit them in memory. Then we'll have each element in our array hold the address in memory of its corresponding string. Each address is an integer, so really our outer array is just an array of integers. We can call each of these integers a pointer, since it points to another spot in memory.
+
+Items don't have to be the same length, each string can be as long or as short as we want. Dont rely on uniterrupted free memory to store all out strings next to each other, can place each of them separately.
+
+But now this ain't cache friendly because data is scattered all over the place. 
+
+Still O(1) despite slowdown. 
+
+-----------
+Dynamic Arrays: Arrays that resize itself based on input
+JS already does this 
+Dynamic array starts off with a size and capacity and stores the end index.
+
+Make a bigger array, twice as big maybe. Copy each element from the old array to the new array. 
+Free up the old array to use for something else. Append new item. 
+O(n) worse case run time because of the doubling of the items. 
+
+-------------
+LINKED LISTS O(1)
+If each character is the string were a two index array:
+1. the character itself
+2. Pointer to the next character
+Both of these items is a node, a series is a linked LISTS
+
+Free to store nodes whereever we can find two open slots in memory. They don't have to be next to each other nor in order. 
+
+First node is the HEAD and the last node is the TAIL. This is for reference. 
+
+TAIL will change as we append new nodes. O(1) time. Worst case too. Better than dynamic arrays. 
+
+Appending is easy too. Just create a new node, point it's next to the the next node and head to the new node. 
+
+*Can go anywhere in the memory, they don't have to sit right next to each other like items in arrays do. 
+BUT look ups in linked lists are more of a process, because we have no way of knowing where the
+ith node is in memory - so we have to walk through the linked list node by node to find it. 
+
+O(i) lookups. Much slower than arrays. Also not cache friendly. 
+Next node could be anywhere in memory. Look ups are sloooow.
+
+Fast prepends and appends but slow lookups. 
+
+-------------
+HASH TABLES
+
+We use arrays more often than linked lists for quicker look ups. 
+Fast look ups with keys and values (O(n) time).
+Has collisions make lookups slow, but arbitraty keys make for a fast look up. 
+
+
+
+
+
+
+
+
+
+
